@@ -82,7 +82,7 @@ plugins=(
   	history-substring-search
  )
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh  
 
 # User configuration
 
@@ -140,8 +140,16 @@ build_prompt() {
   prompt_end
 }
 
+# use some crazy ass shell prompt
+# thanks to for the basis: https://github.com/calvinhp/dotfiles/blob/master/.zshrc
+ME="gil"
+# source ~/.zshprompt
+
 PROMPT='%{%f%b%k%}$(build_prompt) '
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# eval "$(oh-my-posh prompt init zsh)"
+eval "$(oh-my-posh prompt init zsh --config ~/.mytheme.omp.json)"
