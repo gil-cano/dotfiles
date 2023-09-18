@@ -1,6 +1,19 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/local/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/opt/gettext/bin:/Library/TeX/texbin:$PATH
+# make 4
+# export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/usr/local/opt/gettext/bin
+
+# pyenv configuration for Zsh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# to enable auto-activation of virtualenvs 
+# if which pyenv-virtualenv-init > /dev/null; then 
+#   eval "$(pyenv virtualenv-init -)";
+# fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/gil/.oh-my-zsh"
@@ -11,7 +24,6 @@ export ZSH="/Users/gil/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
-# ZSH_THEME="cobalt2"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -29,14 +41,8 @@ ZSH_THEME="agnoster"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -72,26 +78,25 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	  colored-man-pages
-	  colorize
-  	git
-  	# pipenv
-  	python
-  	zsh-syntax-highlighting
-  	# zsh-autosuggestions
-  	history-substring-search
- )
+  colored-man-pages
+  colorize
+  git
+  pyenv
+  python
+  zsh-syntax-highlighting
+  # zsh-autosuggestions
+  history-substring-search
+)
 
-source $ZSH/oh-my-zsh.sh  
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export LC_ALL=en_US.UTF-8
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-# iTerm2 fix
-export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -103,6 +108,9 @@ export LC_ALL=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -111,45 +119,19 @@ export LC_ALL=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# Dir: current working directory
 
-# Context: user@hostname (who am I and where am I)
-prompt_context() {
-  local user=`whoami`
+# If you need to have brew sqlite first in your PATH
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
-  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)✝"
-  fi
-}
+# Created by `pipx` on 2022-12-06 15:32:16
+export PATH="$PATH:/Users/gil/.local/bin"
 
-# Dir: current working directory
-prompt_dir() {
-  prompt_segment blue black '%3~'
-  # prompt_segment blue black "…${PWD: -30}"
-}
-
-## Main prompt
-build_prompt() {
-  RETVAL=$?
-  prompt_status
-  prompt_virtualenv
-  prompt_aws
-  prompt_context
-  prompt_dir
-  prompt_git
-  prompt_end
-}
-
-# use some crazy ass shell prompt
-# thanks to for the basis: https://github.com/calvinhp/dotfiles/blob/master/.zshrc
-ME="gil"
-# source ~/.zshprompt
-
-PROMPT='%{%f%b%k%}$(build_prompt) '
+# alias ls='pls --multi-cols'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# eval "$(oh-my-posh prompt init zsh)"
-eval "$(oh-my-posh prompt init zsh --config ~/.mytheme.omp.json)"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# PROMPT="%{$fg[green]%}$(python -V 2>&1 | cut -f 2 -d ' ')%{$reset_color%}% "$PROMPT
