@@ -1,15 +1,11 @@
-# This is Git's per-user configuration file.
 [user]
 	name = Gildardo Bautista García Cano
 	email = gil.cano@gmail.com
-# misc settings
 [core]
-    # set your prefered editor
-    editor = nano
-    excludesfile = ~/.gitignore
+	editor = nano
 # pretty colors, yay!
 [color]
-    ui = auto
+	ui = auto
 # from Calvin Hendryx-Parker dotfile
 [color "branch"]
 	current = yellow reverse
@@ -24,7 +20,7 @@
 [color "status"]
 	added = yellow
 	changed = green
-	untracked = cyan
+	untracked = cyan	
 [alias]
 # Status helpers
 	st = status -sb
@@ -34,4 +30,4 @@
 	ci = commit
 	co = checkout
 [github]
-    user = gil-cano
+	user = gil-cano

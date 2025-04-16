@@ -1,5 +1,8 @@
-#export LDFLAGS="-L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/bzip2/lib -L/opt/homebrew/opt/jpeg/lib -L/opt/homebrew/opt/zlib/lib"
-#export CPPFLAGS="-I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/bzip2/include -I/opt/homebrew/opt/jpeg/include -I/opt/homebrew/opt/zlib/include"
+# Oh My posh configuration
+# eval "$(oh-my-posh prompt init zsh)"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/space.omp.json)"
+fi
 
 # pyenv configuration for Zsh
 export PYENV_ROOT="$HOME/.pyenv"
@@ -11,8 +14,15 @@ if which pyenv-virtualenv-init > /dev/null; then
   eval "$(pyenv virtualenv-init -)";
 fi
 
-# Oh My posh
-# eval "$(oh-my-posh prompt init zsh)"
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/space.omp.json)"
-fi
+# pipx configuration with pyenv
+export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.12.9/bin/python"
+
+# Created by `pipx` on 2023-10-01 15:48:36
+export PATH="$PATH:/Users/gil/.local/bin"
+
+#export LDFLAGS="-L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/bzip2/lib -L/opt/homebrew/opt/jpeg/lib -L/opt/homebrew/opt/zlib/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/bzip2/include -I/opt/homebrew/opt/jpeg/include -I/opt/homebrew/opt/zlib/include"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
